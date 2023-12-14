@@ -11,12 +11,7 @@ function App() {
   return (
       <div className="App">
           <h1>Scroll component with a little bit of humor</h1>
-          <div style={{
-              height: '400px',
-              width: '80%',
-              marginLeft: '10%',
-              overflowY: 'scroll'
-          }}>
+          <div>
               <InfiniteScroll/>
           </div>
       </div>

@@ -68,18 +68,34 @@ const InfiniteScroll = () => {
 
     }, []);
 
+    const handleChange = () => {
+        setItems(items.map( (item) => {
+            return(
+                {...item, setup: item.setup.concat(' changed!')}
+            )
+        }))
+    }
+
 
     return (
         <div>
-            {items.map(item => {
-                if(item.setup || item.delivery)return (
-                <div>
-                    <h2>{item.setup}</h2>
-                    <h4>{item.delivery}</h4>
-                </div>
-            )})}
-            {error && <div>{error}</div>}
-            {hasMore && <div ref={elementRef} >Load more items</div>}
+            <div style={{
+                height: '400px',
+                width: '80%',
+                marginLeft: '10%',
+                overflowY: 'scroll'
+            }}>
+                {items.map(item => {
+                    if(item.setup || item.delivery)return (
+                    <div>
+                        <h2>{item.setup}</h2>
+                        <h4>{item.delivery}</h4>
+                    </div>
+                    )})}
+                    {error && <div>{error}</div>}
+                    {hasMore && <div ref={elementRef} >Load more items</div>}
+            </div>
+            <button onClick={handleChange}>Change records</button>
         </div>
     )
 };
